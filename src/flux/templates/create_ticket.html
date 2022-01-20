@@ -1,0 +1,50 @@
+{% extends 'base_flux.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <section id="post-content" class="container border border-2 rounded-3 my-2">
+        <div id="post-header" class="row align-items-center py-3">
+            <div class="col-12 text-center">Votre demande de crititique</div>
+        </div>
+        <div id="post" class="row text-start my-3">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="col-6 text-start my-3">
+                    {{ form.title.label_tag }} {{ form.title }}
+                </div>
+                <div class="col-12 my-3">
+                    {{ form.description.label_tag }}
+                    <br>
+                    {{ form.description }}
+                </div>
+                <div class="col-12 my-3">
+                    {{ form.image.label_tag }}
+                    <br>
+                    <div class="row">
+                        <div class="col-4">
+                            <h5>Image:</h5>
+                            <img src="{% get_media_prefix %}{{ ticket.image }}" alt="">
+                        </div>
+                        <div class="col-6">
+                            <h5>Changer d'image:</h5>
+                            {{ form.image }}
+                        </div>
+                    </div>
+                </div>
+
+                {% for error in errors.values %}
+                    <h3 style="color: red;">
+                        {{ error }}
+                    </h3>
+                {% endfor %}
+
+                <input id="btn-ticket-submit" class="btn btn-primary my-3" type="submit" value="Demander la critique">
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

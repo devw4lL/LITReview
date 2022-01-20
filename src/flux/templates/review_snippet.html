@@ -1,0 +1,49 @@
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <section id="post-content" class="container border border-2 rounded-3 my-2">
+        <div id="post-header" class="row align-items-center py-3">
+            <div class="col-4 text-start">
+                {% if review.user_id == user.id %}
+                    <h6><i>Vous</i> Avez publié une critique</h6>
+                {% else %}
+                    <h6><i>{{ review.user.nick_name }}</i> A publié une critique</h6>
+                {% endif %}
+            </div>
+            <div class="col-8 text-end">
+                <h6>Le: {{ review.time_created|date:"D d M Y" }} à {{ review.time_created|date:"H:i" }}</h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 text-start my-3">
+                <h5>{{ review.headline }}</h5>
+                <div class="review-feedback">
+                    <span class="far fa-star {% if review.rating > 0 %} fas fa-star {% endif %}"></span>
+                    <span class="far fa-star {% if review.rating > 1 %} fas fa-star {% endif %}"></span>
+                    <span class="far fa-star {% if review.rating > 2 %} fas fa-star {% endif %}"></span>
+                    <span class="far fa-star {% if review.rating > 3 %} fas fa-star {% endif %}"></span>
+                    <span class="far fa-star {% if review.rating > 4 %} fas fa-star {% endif %}"></span>
+                </div>
+                <p>{{ review.body }}</p>
+            </div>
+        </div>
+
+        {% with ticket=post.ticket has_review=True %}
+            {% include 'ticket_snippet.html' %}
+        {% endwith %}
+        <div>
+            {% if review.user_id == user.id and mypost %}
+                <a id="btn-ticket" class="btn btn-primary mb-3" href="{% url 'blog:delete-review'  pk=review.id %}">Supprimer
+                    la critique</a>
+            {% endif %}
+        </div>
+
+    </section>
+
+
+
+{% endblock %}

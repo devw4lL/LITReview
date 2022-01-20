@@ -1,0 +1,64 @@
+{% extends 'base_accounts.html' %}
+{% load static %}
+
+
+{% block title %}LITReview - Profile - {{ user_info.nick_name }}{% endblock %}
+
+{% block subtitle %}
+    <div id="post-header" class="row align-items-center py-3">
+        <div id="post" class="row text-center"><h4>Profile</h4></div>
+    </div>
+{% endblock %}
+
+{% block login %}
+
+    <table id="post" class="table table-hover align-middle">
+        <tbody>
+        <tr>
+            <th>Photo de profile</th>
+            <th><img src="{% get_media_prefix %}{{ user.profile_picture }}" alt=""></th>
+        </tr>
+        <tr>
+            <th>Nom utilisateur:</th>
+            <th>{{ user_info.nick_name }}</th>
+        </tr>
+        <tr>
+            <th>Nom:</th>
+            <th>{{ user_info.first_name }}</th>
+        </tr>
+        <tr>
+            <th>Prénom:</th>
+            <th>{{ user_info.last_name }}</th>
+        </tr>
+        <tr>
+            <th>Adresse Email:</th>
+            <th>{{ user_info.email }}</th>
+        </tr>
+        <tr>
+            <th>Date de naissance:</th>
+            <th>{{ user_info.date_of_birth }}</th>
+        </tr>
+        <tr>
+            <th>Adresse:</th>
+            <th>
+                    {{ user_info.address }}
+                <br>
+                    {{ user_info.zip_code }}
+                <br>
+                    {{ user_info.zip_code }}
+            </th>
+        </tr>
+        <tr>
+            <th>Social:</th>
+            <th>
+                    {{ user_info.social_1 }}
+                <br>
+                    {{ user_info.social_2 }}
+                <br>
+                    {{ user_info.social_3 }}
+            </th>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

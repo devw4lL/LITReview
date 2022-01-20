@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+    <section id="post-content" class="container border border-2 rounded-3 my-2">
+        {% block subtitle %}
+        {% endblock %}
+
+        <div id="post" class="row text-start my-3 text-center">
+            {% block login %}
+            {% endblock %}
+        </div>
+    </section>
+
+{% endblock %}
+
+

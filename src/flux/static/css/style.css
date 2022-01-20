@@ -1,0 +1,84 @@
+html {
+    max-width: 100%;
+}
+
+body {
+    background-color: #15171a;
+}
+
+body header {
+    background-color: #0a0a0c;
+}
+body footer {
+    background-color: #0a0a0c;
+}
+
+.border {
+    border-color: #797f8a !important;
+}
+
+#post-content {
+    background-color: #384657;
+    color: #c4c4cc;
+}
+
+#post-header {
+    background-color: #0a0a0c;
+
+}
+
+#search-user {
+        background-color: #28323d;
+        color: #c4c4cc;
+}
+
+#search-result td {
+        color: #c4c4cc;
+}
+
+#search-result th {
+        color: #63636e;
+}
+
+#search-result {
+    background-color: #28323d;
+    color: #c4c4cc;
+}
+
+#btn-ticket{
+    border-color: #a9a9a9 !important;
+}
+
+#post {
+        color: #c4c4cc;
+}
+
+#btn-flux{
+    border-color: #0d1115 !important;
+}
+
+
+
+#id_rating {
+    display: flex;
+    align-items: flex-start;
+
+}
+
+#id_rating label {
+    display: inline-block;
+    padding-left: 10px;
+    margin-right: 30px;
+
+}
+
+#user-link a{
+    text-decoration: none;
+    color: #c4c4cc;
+}
+
+#user-link a:hover{
+    text-decoration: none;
+    color: white;
+}
+

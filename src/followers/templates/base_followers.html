@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    {% block user_search %}
+        {% block search %}
+        {% endblock %}
+        {% block search_result %}
+        {% endblock %}
+    {% endblock %}
+
+    <section id="search-result" class="container border border-2 rounded-3 my-2">
+        {% block social %}
+            {% block followed %}
+            {% endblock %}
+            {% block followers %}
+            {% endblock %}
+        {% endblock %}
+    </section>
+
+{% endblock %}

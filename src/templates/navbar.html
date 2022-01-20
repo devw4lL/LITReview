@@ -1,0 +1,45 @@
+{% load static %}
+
+<nav id="navbar" class="nav">
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-2">
+                <a href="{% url 'blog:flux' %}" class="" id="logo">
+                    <img class="logo" src="{% static '/logo/logo_pp.png' %}"/>
+                </a>
+            </div>
+            <div class="col-6">
+                <ul class="nav justify-content-center  display-6">
+                    <li class="nav-item mx-3">
+                        <a href="{% url 'blog:flux' %}" class="nav-link active px-2 text-white">Flux</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a href="{% url 'blog:my-post' %}" class="nav-link px-2 text-white">Posts</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a href="{% url 'followers:get-users' %}" class="nav-link px-2 text-white">Abonnements</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4 text-end">
+                {% if user.is_authenticated %}
+                    <div id="user-link" class="col-6">
+                        Bonjour,
+                        <a href="{% url 'accounts:profile' pk=user.id %}"><strong>{{ request.user }}</strong></a>
+                    </div>
+                    <div class="row text-end">
+                        <div class="col-6 mt-3">
+                            <a href="{% url 'accounts:logout' %}" type="button" class="btn btn-warning">Se déconnecter</a>
+                {% else %}
+                            <a href="{% url 'accounts:login' %}" type="button" class="btn btn-outline-light me-2">Se connecter</a>
+                            <a href="{% url 'accounts:signup' %}" type="button" class="btn btn-warning">S'inscrire</a>
+                {% endif %}
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>

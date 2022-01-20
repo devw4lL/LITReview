@@ -1,0 +1,10 @@
+{% extends 'base_flux.html' %}
+{% load static %}
+
+{% block title %}{{ ticket.title }}{% endblock %}
+
+{% block content %}
+
+    {% include 'ticket_snippet.html' with post=ticket %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base_flux.html' %}
+
+{% block title %}{{ review.headline }}{% endblock %}
+
+{% block content %}
+
+      <section id="post-content" class="container border border-2 rounded-3 my-2">
+            <div id="post-header" class="row align-items-center py-3">
+                <div id="post" class="row text-center"><h4>Voulez vous supprimer :</h4></div>
+            </div>
+        </section>
+        {% include 'review_snippet.html' %}
+
+        <section id="post-content" class="container border border-2 rounded-3 my-2">
+            <div id="post-header" class="row align-items-center py-3 text-center">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" id="btn-ticket" class="btn btn-primary mb-3" value="Supprimer">
+                </form>
+            </div>
+        </section>
+
+{% endblock %}

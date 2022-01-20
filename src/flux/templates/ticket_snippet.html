@@ -1,0 +1,45 @@
+{% load static %}
+
+{%  block title %}{% endblock %}
+
+{% block content %}
+
+    <section id="post-content" class="container border border-2 rounded-3 my-2">
+        <div id="post-header" class="row align-items-center py-3">
+            <div class="col-4 text-start">
+                {% if ticket.user_id == user.id %}
+                    <h6><i>Vous</i> Avez demandé une critique</h6>
+                {% else %}
+                    <h6><i>{{ ticket.user.nick_name }}</i> A demandé une critique</h6>
+                {% endif %}
+            </div>
+            <div class="col-8 text-end">
+                <h6>Le: {{ ticket.time_created|date:"D d M Y" }} à {{ ticket.time_created|date:"H:i" }}</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-start my-3">
+                <h5>{{ ticket.title }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10">
+                <img src="{% get_media_prefix %}{{ ticket.image }}" class="rounded float-start mx-3 mb-3" alt="">
+                <p>{{ ticket.description }}</p>
+            </div>
+        </div>
+
+        <div >
+
+            {% if not has_review %}
+                <a id="btn-ticket" class="btn btn-primary mb-3" href="{% url 'blog:create-review'  pk=ticket.id %}">Ajouter une critique</a>
+                {% if ticket.user_id == user.id and mypost %}
+
+                    <a id="btn-ticket" class="btn btn-primary mb-3" href="{% url 'blog:delete-ticket'  pk=ticket.id %}">Supprimer la demande de critique</a>
+                {% endif %}
+            {% endif %}
+
+        </div>
+    </section>
+
+{% endblock %}

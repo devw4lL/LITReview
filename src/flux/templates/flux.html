@@ -1,0 +1,26 @@
+{% extends 'base_flux.html' %}
+{% load static %}
+
+{% block title %}LITReview - Articles{% endblock %}
+
+{% block flux %}
+    <div class="container my-2">
+        <div class="d-grid d-md-block justify-content-center text-center">
+            <a id="btn-flux" class="col-3 btn btn-primary" href="{% url 'blog:create-ticket' %}">Demander une critique</a>
+            <a id="btn-flux" class="col-3 btn btn-primary" href="{% url 'blog:create-review' pk=00 %}">Créer une critique</a>
+        </div>
+    </div>
+    {% for post in posts %}
+
+        {% if post.content_type == 'TICKET' %}
+            {% with has_review=post.has_review %}
+                {% if not has_review %}
+                    {% include 'ticket_snippet.html' with ticket=post mypost=mypost %}
+                {% endif %}
+            {% endwith %}
+        {% elif post.content_type == 'REVIEW' %}
+            {% include 'review_snippet.html' with review=post mypost=mypost %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

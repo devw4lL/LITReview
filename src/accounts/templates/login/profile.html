@@ -1,0 +1,25 @@
+{% extends 'base_accounts.html' %}
+
+
+
+
+
+{% block title %}LITReview - Profile - user_info.nick_name{% endblock %}
+
+    {% block subtitle %}
+        <div id="post-header" class="row align-items-center py-3">
+            <div id="post" class="row text-center"><h4>Profile</h4></div>
+        </div>
+    {% endblock %}
+
+    {% block login %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <input id="btn-ticket-submit" class="btn btn-primary my-3 text-center" type="submit"
+                   value="Connexion">
+        </form>
+
+    {% endblock %}
